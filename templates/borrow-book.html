@@ -1,0 +1,21 @@
+{% block content %} {% include
+"header.html" %}
+
+<div class="container">
+    <h1>Borrow Books</h1><br>
+    {% if request.args.get('success') %}
+  <p>Book is borrowed!</p>
+    {% elif request.args.get('error') %}
+    <p>Book does not exist or you already borrowed 3 books!!!</p>
+
+    {% endif %}
+  <form action="{{ url_for('borrow_book') }}" method="POST">
+  <label >Book Code:</label>
+  <input type="text" name="code" value={{request.args.get('code')}} required><br><br>
+      <label >Student ID:</label>
+  <input type="text" name="sid" required><br><br>
+  <input type="submit" value="Borrow Book">
+</form>
+</div>
+
+{% include "footer.html" %} {% endblock %}

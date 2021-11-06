@@ -1,0 +1,26 @@
+{% block content %} {% include
+"header.html" %}
+<!-- Page Header -->
+
+<div class="container">
+    <h1>Add Books</h1><br>
+
+    {% if request.args.get('success') %}
+  <p>Book is added to the library!</p>
+    {% elif request.args.get('error') %}
+    <p>Book already exists!!!</p>
+
+    {% endif %}
+  <form action="{{ url_for('add_book') }}" method="POST">
+  <label>Book Name:</label>
+  <input type="text" name="name" required><br><br>
+  <label >Book Code:</label>
+  <input type="text" name="code" required><br><br>
+     <label >Book Author:</label>
+  <input type="text" name="author" required><br><br>
+     <label>Book Genre</label>
+  <input type="text" name="genre" required><br><br>
+  <input type="submit" value="Add Book">
+</form>
+</div>
+{% include "footer.html" %} {% endblock %}

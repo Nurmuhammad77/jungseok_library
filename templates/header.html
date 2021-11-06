@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='stylesheets/style.css') }}">
+
+    <title>Library</title>
+  </head>
+
+  <body>
+    <nav>
+      <div class="nn" style="background-image: linear-gradient(rgba(4, 9, 30, 0.83), rgba(4, 9, 30, 0.6)), url('static/img/mainpage.png')">
+        <nav class="nav-bar">
+          <a href="{{ url_for('home') }}"><img src="{{ url_for('static',filename='img/logo2.png') }}"></a>
+
+         <div class="nav-links" id="navLinks">
+          <ul>
+             <li>
+              <a href="{{ url_for('home') }}">HOME</a>
+            </li>
+            <li>
+              <a href="{{ url_for('add_book') }}">ADD BOOK</a>
+            </li>
+            <li>
+              <a href="{{ url_for('delete_book') }}">DELETE BOOK</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('borrow_book') }}"
+                >BORROW BOOK</a
+              >
+            </li>
+
+            <li>
+              <a href="{{ url_for('search_book') }}"
+                >SEARCH BOOK</a
+              >
+            </li>
+
+
+          </ul>
+         </div>
+        </nav>
+      </div>
+          <div class="text-box">
+    <h1>Jungseok Library Management</h1>
+    <p>
+    Jungseok Memorial Library opened in September of 2003, and it is the nation’s leading digital
+    library <br> with state-of-the-art facilities that can accommodate a variety of multimedia and digital materials.
+    </p>
+    </div>
+    </nav>
+
+
+  </body>
+</html>

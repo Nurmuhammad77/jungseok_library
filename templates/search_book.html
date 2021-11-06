@@ -1,0 +1,62 @@
+ {% block content %} {% include
+"header.html" %}
+
+<div class="container">
+    <h1>Search Books</h1>
+
+
+    <div class="formcha">
+      <form
+        action="{{ url_for('search_book') }}"
+        method="POST"
+      >
+        <label>Search Book: </label>
+        <input
+          name="search"
+          type="text"
+          required
+        />
+        <select
+          name="select"
+        >
+          <option value="name" selected>By name</option>
+          <option value="code">By code</option>
+          <option value="genre">By genre</option>
+          <option value="author">By author</option>
+        </select>
+
+        <button type="submit">Search</button>
+      </form>
+    </div>
+     <div class="table">
+      <table>
+          <tr>
+            <th>Book Name</th>
+            <th>Book Author</th>
+            <th>Book Genre</th>
+            <th>Book Code</th>
+            <th>Availability</th>
+          </tr>
+        {% for book in books %}
+          <tr>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.code }}</td>
+            <td>{% if not book.holder %}
+            <a href="{{ url_for('borrow_book', code=book.code) }}">Borrow</a>
+            {% endif %}</td>
+          </tr>
+         {% endfor %}
+        </table>
+
+    </div>
+
+
+  </div>
+
+
+
+
+</div>
+{% include "footer.html" %} {% endblock %}

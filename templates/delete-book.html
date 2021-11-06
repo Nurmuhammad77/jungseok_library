@@ -1,0 +1,18 @@
+{% block content %} {% include
+"header.html" %}
+
+<div class="container">
+    <h1>Delete Books</h1><br>
+    {% if request.args.get('success') %}
+  <p>Book is deleted!</p>
+    {% elif request.args.get('error') %}
+    <p>Book does not exist!!!</p>
+
+    {% endif %}
+  <form action="{{ url_for('delete_book') }}" method="POST">
+  <label >Book Code:</label>
+  <input type="text" name="code" required><br><br>
+  <input type="submit" value="Delete Book">
+</form>
+</div>
+{% include "footer.html" %} {% endblock %}

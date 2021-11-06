@@ -1,0 +1,60 @@
+{% block content %}
+{% include "header.html" %}
+
+
+<div class="container">
+  <div>
+    <h1>Welcome To Jungseok Library</h1>
+
+    <!-- Sorting -->
+    <div class="formcha">
+      <form
+        action="{{ url_for('home') }}"
+
+        method="POST"
+      >
+        <label>Sort Books by:
+        </label>
+        <select
+          name="select"
+        >
+          <option value="name" selected>Book Name</option>
+          <option value="code">Book Code</option>
+        </select>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!--  -->
+
+    <div class="table">
+      <table>
+          <tr>
+            <th>Book Name</th>
+            <th>Book Author</th>
+            <th>Book Genre</th>
+            <th>Book Code</th>
+            <th>Availability</th>
+          </tr>
+        {% for book in books %}
+          <tr>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.code }}</td>
+            <td>{% if not book.holder %}
+            <a href="{{ url_for('borrow_book', code=book.code) }}">Borrow</a>
+            {% endif %}</td>
+          </tr>
+         {% endfor %}
+        </table>
+
+    </div>
+  </div>
+
+
+
+</div>
+{% include "footer.html" %}
+{% endblock %}
